@@ -353,7 +353,7 @@ function ContactContent() {
                               nameInputRef.current = e;
                             }}
                             placeholder="Full Name"
-                            className="h-14 bg-black border-slate-800 focus:ring-blue-500 rounded-xl font-medium text-white placeholder:text-white/70"
+                            className="h-14 bg-slate-50 dark:bg-black border-slate-200 dark:border-slate-800 focus:ring-blue-500 rounded-xl font-medium text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/70 transition-colors"
                           />
                           <FieldError errors={[errors.name]} />
                         </FieldContent>
@@ -370,7 +370,7 @@ function ContactContent() {
                             {...register("mobile")}
                             placeholder="Mobile Number"
                             type="tel"
-                            className="h-14 bg-black border-slate-800 focus:ring-blue-500 rounded-xl font-medium text-white placeholder:text-white/70"
+                            className="h-14 bg-slate-50 dark:bg-black border-slate-200 dark:border-slate-800 focus:ring-blue-500 rounded-xl font-medium text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/70 transition-colors"
                           />
                           <FieldError errors={[errors.mobile]} />
                         </FieldContent>
@@ -386,7 +386,7 @@ function ContactContent() {
                       <FieldContent>
                         <select
                           {...register("service")}
-                          className="flex h-14 w-full rounded-xl border border-slate-800 bg-black px-3 py-2 font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 appearance-none cursor-pointer text-white"
+                          className="flex h-14 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-black px-3 py-2 font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 appearance-none cursor-pointer text-slate-900 dark:text-white transition-colors"
                           defaultValue=""
                         >
                           <option value="" disabled>
@@ -420,7 +420,7 @@ function ContactContent() {
                         <Textarea
                           {...register("description")}
                           placeholder="Briefly describe the issue you're facing..."
-                          className="min-h-[120px] bg-black border-slate-800 focus:ring-blue-500 rounded-xl p-4 resize-none font-medium text-white placeholder:text-white/70"
+                          className="min-h-[120px] bg-slate-50 dark:bg-black border-slate-200 dark:border-slate-800 focus:ring-blue-500 rounded-xl p-4 resize-none font-medium text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/70 transition-colors"
                         />
                         <FieldError errors={[errors.description]} />
                       </FieldContent>
