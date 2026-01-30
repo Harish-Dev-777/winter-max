@@ -23,7 +23,7 @@ const Footer = () => {
           </Link>
           <p className="text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
             Professional servicing, installation, and maintenance for all your
-            home appliances. Trusted by thousands across Tiruchirappalli.
+            home appliances. Trusted by thousands across Thiruvarur.
           </p>
           <div className="flex items-center gap-4">
             <a
@@ -84,17 +84,17 @@ const Footer = () => {
           </h4>
           <ul className="space-y-4">
             {[
-              "About Us",
-              "Contact Us",
-              "Terms of Service",
-              "Privacy Policy",
+              { name: "About Us", href: "/about" },
+              { name: "Contact Us", href: "/contact" },
+              { name: "Terms of Service", href: "/terms" },
+              { name: "Privacy Policy", href: "/privacy" },
             ].map((link) => (
-              <li key={link}>
+              <li key={link.name}>
                 <Link
-                  href={link === "Contact Us" ? "/contact" : "/about"}
+                  href={link.href}
                   className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors font-medium"
                 >
-                  {link}
+                  {link.name}
                 </Link>
               </li>
             ))}
@@ -110,7 +110,7 @@ const Footer = () => {
             <li className="flex items-start gap-4 text-slate-500 dark:text-slate-400 font-medium">
               <MapPin className="w-5 h-5 text-blue-600 shrink-0" />
               <span>
-                Tiruchirappalli, <br />
+                Thiruvarur, <br />
                 Tamil Nadu, India
               </span>
             </li>

@@ -87,7 +87,7 @@ const Nav = () => {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Services", href: "/services" },
+    { name: "Services", href: "/#services" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
@@ -129,7 +129,7 @@ const Nav = () => {
         <ModeToggle />
 
         <Link
-          href="/contact"
+          href="/contact?action=book"
           className="hidden sm:inline-flex btn-winter text-xs px-8 py-3 uppercase tracking-tighter text-black dark:text-white"
         >
           Book Now
@@ -180,7 +180,7 @@ const Nav = () => {
             className="mt-4"
           >
             <Link
-              href="/contact"
+              href="/contact?action=book"
               onClick={() => setIsOpen(false)}
               className="btn-winter text-base px-10 py-4 uppercase tracking-widest font-black"
             >

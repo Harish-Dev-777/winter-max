@@ -34,7 +34,7 @@ const servicesData: Record<
     title: "A/C Services",
     icon: AirVent,
     hero: {
-      title: "Professional A/C Services in Tiruchirappalli",
+      title: "Professional A/C Services in Thiruvarur",
       subtitle: "Expert Installation, Repair & Maintenance",
       description:
         "Keep your space cool and comfortable with our comprehensive air conditioning services. From installation to emergency repairs, we ensure your A/C runs at peak performance year-round.",
@@ -72,7 +72,7 @@ const servicesData: Record<
     whyChoose: [
       "4+ years of specialized experience in A/C servicing",
       "Certified technicians trained on all major brands",
-      "Same-day service available in Tiruchirappalli",
+      "Same-day service available in Thiruvarur",
       "Genuine spare parts and refrigerants only",
       "Transparent pricing with no hidden charges",
       "100% satisfaction guarantee on all services",
@@ -99,7 +99,7 @@ const servicesData: Record<
     title: "Washing Machine Repair",
     icon: WashingMachine,
     hero: {
-      title: "Washing Machine Repair Services in Tiruchirappalli",
+      title: "Washing Machine Repair Services in Thiruvarur",
       subtitle: "Expert Repair for All Major Brands",
       description:
         "Get your washing machine back to perfect working condition with our professional repair services. We handle all types of issues for both front-load and top-load machines.",
@@ -162,7 +162,7 @@ const servicesData: Record<
     title: "Refrigerator Repair",
     icon: Refrigerator,
     hero: {
-      title: "Refrigerator Repair Services in Tiruchirappalli",
+      title: "Refrigerator Repair Services in Thiruvarur",
       subtitle: "Professional Cooling Solutions",
       description:
         "Expert refrigerator repair and maintenance services for all brands. From cooling issues to compressor replacements, we restore your fridge to optimal performance.",
@@ -285,7 +285,7 @@ export default function ServiceDetailPage() {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact"
+              href="/contact?action=book"
               className="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-xl hover:shadow-xl hover:scale-105 transition-all"
             >
               Book Service Now
@@ -329,7 +329,7 @@ export default function ServiceDetailPage() {
       <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black mb-12 text-center">
-            Our Service 
+            Our Service
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {service.services.map((item, index) => (
@@ -411,11 +411,11 @@ export default function ServiceDetailPage() {
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto">
             Book your service now and experience professional appliance care in
-            Tiruchirappalli. Same-day service available!
+            Thiruvarur. Same-day service available!
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/contact"
+              href="/contact?action=book"
               className="inline-flex items-center justify-center px-10 py-5 bg-linear-to-r from-blue-600 to-cyan-500 text-white font-black text-lg rounded-full hover:shadow-xl hover:scale-105 transition-all"
             >
               Book Service

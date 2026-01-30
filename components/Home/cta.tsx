@@ -60,7 +60,7 @@ const CTAStrip = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link
-              href="/contact"
+              href="/contact?action=book"
               className="px-10 py-4 bg-white text-slate-950 rounded-full font-bold text-base hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-white/10"
             >
               Book Now

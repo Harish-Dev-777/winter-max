@@ -6,8 +6,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-montserrat);
+  --font-mono: var(
+    --font-inter
+  ); /* Using Inter as a default for mono as well unless specified otherwise */
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
@@ -79,16 +82,56 @@ body::-webkit-scrollbar {
   * {
     @apply border-border font-sans;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
   body {
     @apply bg-background text-foreground transition-colors duration-300;
   }
 }
 
 @layer components {
+  /* Mobile-optimized hero gradient for better mountain visibility */
+  .hero-gradient-mobile {
+    @apply bg-linear-to-b from-transparent via-blue-500/5 to-background/40;
+  }
+
   .hero-gradient {
     @apply bg-linear-to-br from-blue-400/10 via-white/5 to-transparent dark:from-slate-900/60 dark:via-blue-900/30 dark:to-transparent;
   }
 
+  /* Enhanced premium buttons */
+  .btn-winter-enhanced {
+    @apply relative px-6 py-4 md:px-8 md:py-3.5 rounded-full font-bold transition-all duration-500 
+           bg-linear-to-r from-blue-600 via-blue-500 to-cyan-400 text-white shadow-xl md:shadow-lg
+           hover:scale-[1.03] hover:shadow-[0_20px_40px_rgba(59,130,246,0.5)]
+           active:scale-95 overflow-hidden flex items-center justify-center
+           touch-manipulation;
+  }
+
+  .btn-winter-enhanced::before {
+    content: "";
+    @apply absolute inset-0 bg-linear-to-r from-cyan-400 via-blue-500 to-blue-600 opacity-0 transition-opacity duration-500;
+  }
+
+  .btn-winter-enhanced:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-winter-outline-enhanced {
+    @apply relative px-6 py-4 md:px-8 md:py-3.5 rounded-full font-bold border-2 transition-all duration-500
+           border-blue-400/40 bg-white/10 md:bg-white/5 backdrop-blur-xl text-blue-700 dark:text-blue-300
+           hover:border-blue-500 hover:bg-blue-500/20 hover:shadow-lg
+           active:scale-95 flex items-center justify-center
+           touch-manipulation;
+  }
+
+  /* Original button styles for backward compatibility */
   .btn-winter {
     @apply relative px-8 py-3.5 rounded-full font-bold transition-all duration-500 
            bg-linear-to-r from-blue-600 via-blue-500 to-cyan-400 text-white shadow-lg
@@ -103,15 +146,39 @@ body::-webkit-scrollbar {
            flex items-center justify-center;
   }
 
+  /* Premium glass effects */
   .glass-card {
-    @apply bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-xl;
+    @apply bg-white/10 md:bg-white/5 backdrop-blur-2xl border border-white/20 md:border-white/10 
+           rounded-2xl shadow-2xl md:shadow-xl transition-all duration-300
+           hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:border-white/30;
   }
 
+  /* Enhanced text effects */
   .text-glow {
-    @apply drop-shadow-[0_0_10px_rgba(59,130,246,0.4)] dark:drop-shadow-[0_0_15px_rgba(14,165,233,0.4)];
+    @apply drop-shadow-[0_2px_10px_rgba(59,130,246,0.6)] md:drop-shadow-[0_0_10px_rgba(59,130,246,0.4)] 
+           dark:drop-shadow-[0_2px_15px_rgba(14,165,233,0.5)] dark:md:drop-shadow-[0_0_15px_rgba(14,165,233,0.4)];
   }
 
   .ice-overlay {
     @apply absolute inset-0 bg-linear-to-b from-blue-500/5 to-transparent pointer-events-none;
+  }
+
+  /* Mobile-optimized touch interactions */
+  @media (max-width: 768px) {
+    .btn-winter-enhanced,
+    .btn-winter-outline-enhanced {
+      @apply active:scale-90 transition-transform duration-200;
+    }
+
+    .glass-card {
+      @apply active:scale-[0.98];
+    }
+  }
+
+  /* Smooth scrolling animations */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      @apply scroll-smooth;
+    }
   }
 }

@@ -79,32 +79,32 @@ const ServicesOverview = () => {
     <section
       ref={containerRef}
       id="services"
-      className="py-32 px-6 relative overflow-hidden"
+      className="py-20 md:py-32 px-4 md:px-6 relative overflow-hidden"
     >
       {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/10 blur-3xl rounded-full translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-blue-400/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-64 md:w-96 h-64 md:h-96 bg-cyan-400/10 blur-3xl rounded-full translate-y-1/2 -translate-x-1/2" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20 space-y-6">
+        <div className="text-center mb-12 md:mb-20 space-y-4 md:space-y-6">
           <div className="flex justify-center">
             <span className="px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-black uppercase tracking-widest text-[10px] border border-blue-500/20">
               Our Expertise
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-glow">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-glow px-4">
             Premiums{" "}
             <span className="text-blue-600 dark:text-blue-400">solutions</span>{" "}
             we offer
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-lg md:text-xl font-medium">
+          <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-base md:text-lg lg:text-xl font-medium px-4">
             Expert care for your essential appliances. We focus on delivering
             high-quality repair and maintenance for ACs, Refrigerators, and
             Washing Machines.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => (
             <div
               key={service.title}
