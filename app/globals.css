@@ -1,26 +1,117 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Light Mode - Cold Blue Theme */
+  --background: #85cbea; /* Mist Blue */
+  --foreground: #1e293b;
+  --card: #ffffff;
+  --card-foreground: #1e293b;
+  --popover: #ffffff;
+  --popover-foreground: #1e293b;
+  --primary: #2563eb; /* Strong Blue */
+  --primary-foreground: #ffffff;
+  --secondary: #e0f2fe; /* Light Ice Blue */
+  --secondary-foreground: #0369a1;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #bae6fd;
+  --accent-foreground: #0369a1;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #3b82f6;
+}
+
+.dark {
+  /* Dark Mode - Deep Slate Blue */
+  --background: #020617; /* Deepest Navy */
+  --foreground: #f8fafc;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+  --popover: #0f172a;
+  --popover-foreground: #f8fafc;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #1e293b;
+  --secondary-foreground: #e2e8f0;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #0ea5e9;
+  --accent-foreground: #ffffff;
+  --destructive: #991b1b;
+  --destructive-foreground: #f8fafc;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #1d4ed8;
+}
+
+@layer base {
+  * {
+    @apply border-border font-sans;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .hero-gradient {
+    @apply bg-linear-to-br from-blue-400/10 via-white/5 to-transparent dark:from-slate-900/60 dark:via-blue-900/30 dark:to-transparent;
+  }
+
+  .btn-winter {
+    @apply relative px-8 py-3.5 rounded-full font-bold transition-all duration-500 
+           bg-linear-to-r from-blue-600 via-blue-500 to-cyan-400 text-white shadow-lg
+           hover:scale-[1.02] hover:shadow-[0_15px_30px_rgba(59,130,246,0.4)]
+           active:scale-95 overflow-hidden flex items-center justify-center;
+  }
+
+  .btn-winter-outline {
+    @apply relative px-8 py-3.5 rounded-full font-bold border-2 transition-all duration-500
+           border-blue-400/30 bg-white/5 backdrop-blur-xl text-blue-600 dark:text-blue-300
+           hover:border-blue-500 hover:bg-blue-500/10 hover:shadow-md
+           flex items-center justify-center;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-xl;
+  }
+
+  .text-glow {
+    @apply drop-shadow-[0_0_10px_rgba(59,130,246,0.4)] dark:drop-shadow-[0_0_15px_rgba(14,165,233,0.4)];
+  }
+
+  .ice-overlay {
+    @apply absolute inset-0 bg-linear-to-b from-blue-500/5 to-transparent pointer-events-none;
+  }
 }
