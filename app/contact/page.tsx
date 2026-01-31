@@ -20,6 +20,7 @@ import {
   CheckCircle2,
   ArrowRight,
   Loader2,
+  MapPinned,
 } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -50,6 +51,9 @@ const bookingSchema = z.object({
   mobile: z
     .string()
     .regex(/^[6-9]\d{9}$/, "Please enter a valid 10-digit mobile number"),
+  location: z
+    .string()
+    .min(5, "Please provide your location (min 5 characters)"),
   description: z
     .string()
     .min(
@@ -156,14 +160,34 @@ function ContactContent() {
 
   const onSubmit = async (data: BookingFormValues) => {
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    console.log("Booking Data:", data);
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    toast.success("Service booked successfully! We will call you shortly.");
-    reset();
+    try {
+      const response = await fetch("/api/send-booking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to submit booking");
+      }
+
+      console.log("Booking submitted:", result);
+      setIsSuccess(true);
+      toast.success("Service booked successfully! We will call you shortly.");
+      reset();
+    } catch (error) {
+      console.error("Booking error:", error);
+      toast.error(
+        "Failed to submit booking. Please try again or call us directly.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -376,6 +400,22 @@ function ContactContent() {
                         </FieldContent>
                       </Field>
                     </div>
+
+                    {/* Location Field */}
+                    <Field orientation="vertical">
+                      <FieldLabel className="text-sm font-black uppercase tracking-widest flex items-center gap-2 text-slate-400">
+                        <MapPinned className="w-4 h-4 text-blue-500" />
+                        Your Location
+                      </FieldLabel>
+                      <FieldContent>
+                        <Input
+                          {...register("location")}
+                          placeholder="City / Area (e.g., Thiruvarur, Mannargudi)"
+                          className="h-14 bg-slate-50 dark:bg-black border-slate-200 dark:border-slate-800 focus:ring-blue-500 rounded-xl font-medium text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-white/70 transition-colors"
+                        />
+                        <FieldError errors={[errors.location]} />
+                      </FieldContent>
+                    </Field>
 
                     {/* Service Selection */}
                     <Field orientation="vertical">
