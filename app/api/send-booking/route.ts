@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
-const resend = new Resend("re_PU9TGMaA_cuxCpoB1Bkx8rG5WH9saT2xf");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface BookingData {
   name: string;
